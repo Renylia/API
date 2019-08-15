@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h2>TES API</h2>
+<table id="tb_employees" border="1">
+	<tr>
+		<th>ID</th>
+		<th>Name</th>
+		<th>Salary</th>
+		<th>Age</th>
+	</tr>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$.ajax({url: "http://dummy.restapiexample.com/api/v1/employees", success: function(hasil) {
+		var d_employees = JSON.parse(hasil);
+		
+		$(function(){
+			var data = '';
+			$.each(d_employees, function(key, value){
+				data += '<tr>';
+				data += '<td>'+value.id+'</td>';
+				data += '<td>'+value.employee_name+'</td>';
+				data += '<td>'+value.employee_salary+'</td>';
+				data += '<td>'+value.employee_age+'</td>';
+				data += '</tr>';
+			});
+		$('#tb_employees').append(data);
+		});
+	}});
+</script>
+</table>
+</body>
+</body>
+</html>
